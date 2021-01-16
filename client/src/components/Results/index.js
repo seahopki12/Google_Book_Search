@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import { useStoreContext } from "../../utils/GlobalState"
 import { ADD_SAVE, LOADING } from "../../utils/actions";
@@ -6,11 +6,6 @@ import API from "../../utils/API";
 import "./style.css";
 
 function Results() {
-    // const titleRef = useRef();
-    // const authorsRef = useRef();
-    // const descriptionRef = useRef();
-    // const imageRef = useRef();
-    // const linkRef = useRef();
     const [state, dispatch] = useStoreContext();
 
     const addSave = savedBook => {
@@ -36,8 +31,8 @@ function Results() {
         <Card className="position" bg="light">
             <Card.Body>
                 <Card.Title>Results</Card.Title>
-                {state.books.map(book => (
-                    <Card key={book._id}>
+                {state.books.map((book, index) => (
+                    <Card key={index}>
                         <Card.Body>
                             <Card.Img className="image" variant="top" src={book.image} />
                             <Card.Title>{book.title}</Card.Title>

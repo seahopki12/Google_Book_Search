@@ -1,11 +1,9 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
   SET_CURRENT_BOOK,
-  REMOVE_BOOK,
   UPDATE_BOOKS,
-  ADD_BOOK,
   ADD_SAVE,
-  UPDATE_saved,
+  UPDATE_SAVED,
   REMOVE_SAVE,
   LOADING
 } from "./actions";
@@ -29,21 +27,6 @@ const reducer = (state, action) => {
       loading: false
     };
 
-  // case ADD_BOOK:
-  //   return {
-  //     ...state,
-  //     posts: [action.book, ...state.posts],
-  //     loading: false
-  //   };
-
-  // case REMOVE_BOOK:
-  //   return {
-  //     ...state,
-  //     posts: state.posts.filter((book) => {
-  //       return book._id !== action._id; 
-  //     })
-  //   };
-
   case ADD_SAVE:
     return {
       ...state,
@@ -51,17 +34,17 @@ const reducer = (state, action) => {
       loading: false
     };
 
-  // case UPDATE_SAVED:
-  //   return {
-  //     ...state,
-  //     book: [...state.book],
-  //     loading: false
-  //   };
+  case UPDATE_SAVED:
+    return {
+      ...state,
+      saved: [...action.saved],
+      loading: false
+    };
 
   case REMOVE_SAVE:
     return {
       ...state,
-      book: state.book.filter((book) => {
+      saved: state.saved.filter((book) => {
         return book._id !== action._id; 
       })
     };

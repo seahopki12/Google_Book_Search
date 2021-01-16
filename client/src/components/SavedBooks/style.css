@@ -3,3 +3,8 @@
     margin-right: 5%;
     margin-top: 2%;
 }
+
+.image {
+    max-width: 10%;
+    height: auto;
+  }

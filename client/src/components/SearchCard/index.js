@@ -30,7 +30,7 @@ function SearchCard() {
         <Card className="position" bg="light">
             <Card.Body>
                 <Card.Title>Book Search</Card.Title>
-                <Card.Text>Book</Card.Text>
+                <Card.Text>Search by title:</Card.Text>
                 <Form onSubmit={handleSubmit}>
                     <Form.Control required ref={titleRef} placeholder="Harry Potter" />
                     <br />
