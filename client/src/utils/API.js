@@ -14,10 +14,10 @@ export default {
   // deletePost: function(id) {
   //   return axios.delete("/api/books/" + id);
   // },
-  // // Saves a post to the database
-  // savePost: function(postData) {
-  //   return axios.post("/api/books", postData);
-  // }
+  // Saves a post to the database
+  saveBook: function(bookData) {
+    return axios.post("/api/books", bookData);
+  },
   getBooksByTitle: function(title) {
     return new Promise((resolve, reject) => {
       axios

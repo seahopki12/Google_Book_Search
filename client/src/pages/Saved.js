@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
-import SavedBooksCard from "../components/SavedBooksCard";
+import SavedBooks from "../components/SavedBooks";
 
 function Saved() {
     return (
         <div>
             <Header/>
-            <SavedBooksCard title="Saved Book"/>
+            <SavedBooks/>
         </div>
     )
 }

@@ -4,9 +4,9 @@ import {
   REMOVE_BOOK,
   UPDATE_BOOKS,
   ADD_BOOK,
-  ADD_FAVORITE,
-  UPDATE_FAVORITES,
-  REMOVE_FAVORITE,
+  ADD_SAVE,
+  UPDATE_saved,
+  REMOVE_SAVE,
   LOADING
 } from "./actions";
 
@@ -44,24 +44,24 @@ const reducer = (state, action) => {
   //     })
   //   };
 
-  case ADD_FAVORITE:
+  case ADD_SAVE:
     return {
       ...state,
-      favorites: [action.book, ...state.favorites],
+      saved: [action.book, ...state.saved],
       loading: false
     };
 
-  // case UPDATE_FAVORITES:
+  // case UPDATE_SAVED:
   //   return {
   //     ...state,
-  //     favorites: [...state.favorites],
+  //     book: [...state.book],
   //     loading: false
   //   };
 
-  case REMOVE_FAVORITE:
+  case REMOVE_SAVE:
     return {
       ...state,
-      favorites: state.favorites.filter((book) => {
+      book: state.book.filter((book) => {
         return book._id !== action._id; 
       })
     };
@@ -80,7 +80,7 @@ const reducer = (state, action) => {
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     books: [],
-    currentBook: {
+    book: {
       _id: 0,
       title: "",
       description: "",
@@ -88,7 +88,7 @@ const StoreProvider = ({ value = [], ...props }) => {
       image: "",
       link: ""
     },
-    favorites: [],
+    saved: [],
     loading: false
   });
 

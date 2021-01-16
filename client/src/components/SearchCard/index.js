@@ -14,9 +14,8 @@ function SearchCard() {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch({ type: LOADING });
-        API.getBooksByTitle(titleRef.current.value.toLowerCase())
+        API.getBooksByTitle(titleRef.current.value)
             .then(results => {
-                console.log(results);
                 dispatch({
                     type: UPDATE_BOOKS,
                     books: results
