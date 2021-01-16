@@ -23,16 +23,16 @@ export default {
       axios
         .get(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${key}`)
         .then(res => {
-          const users = res.data;
-          console.log(users);
-          // const results = users.map(user => {
-          //   return {
-          //     login: user.login,
-          //     image: user.avatar_url,
-          //     title: title
-          //   };
-          // });
-          resolve("results will go here...");
+          const books = res.data.items;
+          const results = books.map(book => {
+            return {
+              title: book.volumeInfo.title,
+              authors: book.volumeInfo.authors,
+              image: book.volumeInfo.imageLinks.smallThumbnail,
+              link: book.volumeInfo.canonicalVolumeLink
+            };
+          });
+          resolve(results);
         })
         .catch(err => reject(err));
     });

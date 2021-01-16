@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_POST, LOADING } from "../../utils/actions";
+import { UPDATE_BOOKS, LOADING } from "../../utils/actions";
 import API from "../../utils/API";
 import "./style.css";
 import Card from "react-bootstrap/Card";
@@ -15,12 +15,12 @@ function SearchCard() {
         e.preventDefault();
         dispatch({ type: LOADING });
         API.getBooksByTitle(titleRef.current.value.toLowerCase())
-            .then(result => {
-                // dispatch({
-                //     type: ADD_POST,
-                //     post: result.data
-                // });
-                console.log(result);
+            .then(results => {
+                console.log(results);
+                dispatch({
+                    type: UPDATE_BOOKS,
+                    books: results
+                });
             })
             .catch(err => console.log(err));
 
@@ -35,7 +35,7 @@ function SearchCard() {
                 <Form onSubmit={handleSubmit}>
                     <Form.Control required ref={titleRef} placeholder="Harry Potter" />
                     <br />
-                    <Button variant="primary" disabled={state.loading} type="submit">Submit</Button>
+                    <Button variant="primary" disabled={state.loading} type="submit">Search</Button>
                 </Form>
             </Card.Body>
         </Card>

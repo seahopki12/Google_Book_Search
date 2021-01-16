@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import SavedBooksCard from "../components/SavedBooksCard";
+import Results from "../components/Results";
 import SearchCard from "../components/SearchCard";
 
 function Search() {
@@ -8,7 +8,7 @@ function Search() {
         <div>
             <Header/>
             <SearchCard/>
-            <SavedBooksCard title="Results"/>
+            <Results/>
         </div>
     )
 }
